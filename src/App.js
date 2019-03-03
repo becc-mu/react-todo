@@ -22,6 +22,8 @@ class App extends Component {
       }
     ]
   }
+
+  // Mark completed Todo 
   markComplete = (id) => {
    // console.log(id)
    this.setState({ todos: this.state.todos.map(todo => {
@@ -31,11 +33,19 @@ class App extends Component {
      return todo;
    }) });
   }
+
+  // Delete Todo
+  delTodo = (id) => {
+    //console.log('id')
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id 
+      !== id)] });
+  }
+
   render() { 
     return (
       <div className="App">
         <h1>App</h1>
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
       </div>
     );
   }
